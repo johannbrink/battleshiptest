@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <AssemblyName>Battleship.API</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <PackageId>Battleship.API</PackageId>
+    <AssetTargetFallback>$(AssetTargetFallback);dotnet5.6;portable-net45+win8</AssetTargetFallback>
+    <Company></Company>
+    <Product>Battleship</Product>
+    <Description></Description>
+    <Copyright>2019</Copyright>
+    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\$(Configuration)\netcoreapp2.0\Battleship.API.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\$(Configuration)\netcoreapp2.0\Battleship.API.xml</DocumentationFile>
+    <NoWarn>1701;1702;1705;CS1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.0" />
+    <PackageReference Include="Microsoft.DotNet.Analyzers.Compatibility" Version="0.1.2-alpha" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.0" />
+    <PackageReference Include="Serilog" Version="2.8.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="2.1.0" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="2.4.1-dev-00063" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
+  </ItemGroup>
+
+</Project>
