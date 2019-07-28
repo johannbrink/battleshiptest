@@ -63,7 +63,8 @@ namespace Battleship.API.Controllers
         {
             var board = new GameBoard();
             _gameBoardListContainer.GameBoards.Add(board);
-            return Created($"/api/game/board/{_gameBoardListContainer.GameBoards.IndexOf(board)}", null);
+            var boardIndex = _gameBoardListContainer.GameBoards.IndexOf(board);
+            return Created($"/api/game/board/{boardIndex}", boardIndex);
         }
 
         /// <summary>
@@ -134,7 +135,8 @@ namespace Battleship.API.Controllers
 
             foreach (var register in affectedRegisters)
             {
-                register.OccupationType = OccupationType.Hit;
+                if (register.IsOccupied)
+                    register.OccupationType = OccupationType.Hit;
             }
 
             return Accepted(affectedRegisters.Any(x => x.IsOccupied));
