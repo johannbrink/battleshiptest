@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using System.IO;
 using System.Reflection;
+using Battleship.API.Model;
 
 namespace Battleship.API
 {
@@ -65,6 +66,7 @@ namespace Battleship.API
                 c.IncludeXmlComments(Path.ChangeExtension(Assembly.GetEntryAssembly().Location, "xml"));
             });
 
+            services.AddSingleton<IGameBoardListContainer, GameBoardListContainer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
