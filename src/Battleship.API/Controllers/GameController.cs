@@ -23,9 +23,12 @@ namespace Battleship.API.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("board")]
-        public GameBoard Get(int boardNo)
+        public IActionResult Get(int boardNo)
         {
-            return _gameBoardListContainer.GameBoards[boardNo];
+            if (boardNo + 1 > _gameBoardListContainer.GameBoards.Count)
+                return BadRequest("Invalid boardNo");
+
+            return Ok(_gameBoardListContainer.GameBoards[boardNo]);
         }
 
         /// <summary>
@@ -36,10 +39,17 @@ namespace Battleship.API.Controllers
         /// <returns>Ship</returns>
         [HttpGet]
         [Route("ship")]
-        public Ship Get(int boardNo, int shipNo)
+        public IActionResult Get(int boardNo, int shipNo)
         {
-            var gameBoard= _gameBoardListContainer.GameBoards[boardNo];
-            return gameBoard.Ships[shipNo];
+            if (boardNo + 1 > _gameBoardListContainer.GameBoards.Count)
+                return BadRequest("Invalid boardNo");
+
+            var gameBoard = _gameBoardListContainer.GameBoards[boardNo];
+
+            if (shipNo + 1 > gameBoard.Ships.Count)
+                return BadRequest("Invalid boardNo");
+
+            return Ok(gameBoard.Ships[shipNo]);
         }
 
         /// <summary>
